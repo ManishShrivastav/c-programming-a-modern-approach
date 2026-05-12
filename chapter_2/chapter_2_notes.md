@@ -21,5 +21,16 @@ int main(void)
 
 - Steps to convert *program.c* to a form that the machine can execute:
     1. **Preprocessing**:The program is first given to a **preprocessor**, which obeyscommands that begin with **#** (known as **directives**). A preprocessor is a bit like an editor; it can add things to the program and make modifications.
+        - Typically integrated with the **compiler**.
     2. **Compiling**:The modified program now goes to a **compiler**, which translates it into machine instructions (**object code**). The program isn’t quite ready to run yet, however.
     3. **Linking**: In the final step, a **linker** combines the object code produced by the compiler with any additional code needed to yield a complete executable program. This additional code includes library functions (like `printf`) that are used in the program.
+
+- `cc` Compiler: The compiler used in **UNIX**.
+    - `cc file_name.c`
+    - After compiling and linking the program `cc` leaves the executable program in a file named `a.out` by default.
+    - `-o` option: Allows us to chosse the name of the file containing the executable program.
+        - `cc -o output_file_name file_name.c`
+
+`-gcc` Compiler: The compiler supplied with **Linux** but is available for many other platfroms as well. Has similar use/handling as `cc` compiler.
+    - `gcc -o output_file_name file_name.c`.
+        
