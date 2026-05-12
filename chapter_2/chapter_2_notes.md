@@ -98,3 +98,16 @@ int main(void)
 - Printing Expressions: `printf` isn't limited to displaying numbers stored in variables; it can display the value of any numeric expression.
     - Ex. `printf("%d\n", height * length * width);`
 
+## 2.5 Reading Input
+
+- `scanf`: Function to get input from the user via the console and store it in a variable.
+    - Needs to know what form the input data will take (`int`, `float`, etc.)
+    - Ex. `scanf ("%d", &i ) ; /* reads an integer; stores into i */`
+        - The `"%d"` string/format-specifier tells `scanf` to read input that represents an integer; `i` is an `int` variable into which we want `scanf` to store the input. `&`(not mention in the chapter) provides the memory address for this new `int i` variable to save the value at said memory location.
+
+
+## 2.6 Defining Names for Constants
+
+- Macro Definition: A **preprocessor directive** that defines a name or identifier to represent a value or piece of code. When the program is compiled, the preprocessor replaces every occurrence of the macro name with its defined value or code before actual compilation begins.
+    - Ex. `#define PI 3.14159 `,
+
