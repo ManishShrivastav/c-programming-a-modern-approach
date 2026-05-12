@@ -124,5 +124,10 @@ int main(void)
 ![alt text](image.png)
 
 
+## 2.8 Layout of a C Program
 
+- Tokens: Groups of characters that can't be split up without changing their meaning.
+    - Identifiers, keywords, operators, and punctuation are all tokens.
+
+![alt text](image-1.png)
 
