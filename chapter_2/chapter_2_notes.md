@@ -111,3 +111,18 @@ int main(void)
 - Macro Definition: A **preprocessor directive** that defines a name or identifier to represent a value or piece of code. When the program is compiled, the preprocessor replaces every occurrence of the macro name with its defined value or code before actual compilation begins.
     - Ex. `#define PI 3.14159 `,
 
+## 2.7 Identifiers
+
+- Identifiers: Chosen names for variables, functions, macros, and other entities.
+    - May contain letters, digits, and underscores, but must begin with a letter or underscore.
+    - **Case-sensitive!**
+    - Ex. `times10`, `get_next_char`, `_done`
+
+- Keywords: Reserved words in C that have predefined meanings and serve specific purposes in the language’s syntax. They cannot be used as identifiers (such as variable or function names).
+    - **Case-senstive!**
+
+![alt text](image.png)
+
+
+
+
