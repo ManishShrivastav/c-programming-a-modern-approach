@@ -56,4 +56,45 @@ int main(void)
     - String Literal: A series of characters enclosed in double quotation marks.
     - `\n`: New-line character, terminating output on the current line, and moving subsequent output to the next line.
 
+## 2.3 Comments
+
+- 2 Types of Comments:
+    1. `/* This is a comment */`
+        - Requires opening (`/*`) and closing (`*/`) symbols to encase the comment text within.
+        - Can wrap on multiple lines.
+    2. `// This is a comment`
+        - Requires only the opening (`//`) symbol and restricts the rest of the line to a comment.
+
+## 2.4 Variables and Assignment
+
+- Variables: A way to store data temporarily during program execution.
+
+- Types: A description of what kind of data a variable holds.
+    - Numeric Types: Determine the lrages and smallest numbers that the variable can store, as well as whether or not digits are allowed after the decimal point.
+        - `int`: Short for *integer*, can store a signed or unsigned (positive or negative) whole integer like 0, 1, 392, or -2553.
+        - `float`: Short for *floating-point*, can store much larger numbers than an `int` variable, as well as number **after** the decimal point.
+            - Arithmetic on `float` can be slower than that on type `int`.
+            - The value of a `float` is often just an approximation of the number that was stored in it. 
+                - Ex. float num = 0.1f; -> 0.099999999987 due to *rounding error*.
+
+- Declarations: Variables must be **declared** before they can be used.
+    - Ex. `int length, height, width;`
+
+- Assignment: A variable can be given a value by means of assignment.
+    - When assigning a `float` value, append an `f` to the end of the number to explicitly indicate the type to the compiler.
+    - Ex. `float dec = 3.14f;`
+
+- Print Variable Values: We can use `printf` to display the current value of a variable.
+    - Placeholder characters for different variable types:
+        1. `%d`: Integer -> `int` ("digit")
+        2. `%f`: Float -> `float`
+            - To display the `p` number of digits after the decimal use `.p` inbewteen `%` and `f` -> `%.pf`
+
+- Initialization: When a variable is assigned a value it is then **initialized**, variable without assignment or considered **uninitialized**.
+    - Accessing an uninitialized variable via a `printf` reference could lead to and is called "undefined behavior".
+    - Initializer: The value or expression used to assign an initial value to a variable at the time it is declared.
+        - Ex. `int num = 5;` -> `5` is the **initializer**
+
+- Printing Expressions: `printf` isn't limited to displaying numbers stored in variables; it can display the value of any numeric expression.
+    - Ex. `printf("%d\n", height * length * width);`
 
