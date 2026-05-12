@@ -33,4 +33,27 @@ int main(void)
 
 `-gcc` Compiler: The compiler supplied with **Linux** but is available for many other platfroms as well. Has similar use/handling as `cc` compiler.
     - `gcc -o output_file_name file_name.c`.
-        
+
+## 2.2 The General Form of a Simple Program
+
+- Directives: Commands intended for the preprocessor prior to compilation.
+    - Always begin with a `#` character.
+    - One line long, no semicolon.
+
+- Headers: `.h` files that contain additional functions/code to be "included" into the program before it is compiled.
+    - Ex. `<stdio.h>` -> standard I/O library
+
+- Functions:  simply a series of statements that have been grouped together and given a name. Some functions compute a value; some don't. A function that computes a value uses the `return` statement to specify what value it "returns."
+    
+- `main`: The only mandatory function within a C program, that gets called automatically when the program is executed.
+    - Returns a *status code* (0 or 1) back to the operting system when the program terminates.
+    - See [2.1 Writing a Simple Program](#21-writing-a-simple-program) for example.
+
+- Statements: A command to be executed when the program runs.
+    - Ex. `return`, `my_func()`
+
+- Printing Strings:
+    - String Literal: A series of characters enclosed in double quotation marks.
+    - `\n`: New-line character, terminating output on the current line, and moving subsequent output to the next line.
+
+
