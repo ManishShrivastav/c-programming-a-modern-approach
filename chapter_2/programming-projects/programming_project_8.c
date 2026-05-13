@@ -33,8 +33,8 @@ int main(void)
     float month_one_remaining_balance = loan_amount - monthly_payment + (loan_amount * monthly_interest_rate);
     float month_two_remaining_balance = month_one_remaining_balance - monthly_payment + (month_one_remaining_balance * monthly_interest_rate);
     float month_three_remaining_balance = month_two_remaining_balance - monthly_payment + (month_two_remaining_balance * monthly_interest_rate);
-    printf("Balance remaining after first payment: %.2f\n", month_one_remaining_balance);
-    printf("Balance remaining after second payment: %.2f\n", month_two_remaining_balance);
-    printf("Balance remaining after third payment: %.2f\n", month_three_remaining_balance);
+    printf("Balance remaining after first payment: $%.2f\n", month_one_remaining_balance);
+    printf("Balance remaining after second payment: $%.2f\n", month_two_remaining_balance);
+    printf("Balance remaining after third payment: $%.2f\n", month_three_remaining_balance);
     return 0;
 }
