@@ -31,8 +31,8 @@ int main(void)
     - `-o` option: Allows us to chosse the name of the file containing the executable program.
         - `cc -o output_file_name file_name.c`
 
-`-gcc` Compiler: The compiler supplied with **Linux** but is available for many other platfroms as well. Has similar use/handling as `cc` compiler.
-    - `gcc -o output_file_name file_name.c`.
+- `gcc` Compiler: The compiler supplied with **Linux** but is available for many other platfroms as well. Has similar use/handling as `cc` compiler.
+    - `gcc -o output_filename file_name.c`
 
 ## 2.2 The General Form of a Simple Program
 
