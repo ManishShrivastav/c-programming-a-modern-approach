@@ -93,7 +93,7 @@ int main(void)
         2. `%f`: Float -> `float`
             - To display the `p` number of digits after the decimal use `.p` inbewteen `%` and `f` -> `%.pf`
 
-- Initialization: When a variable is assigned a value it is then **initialized**, variable without assignment or considered **uninitialized**.
+- Initialization: When a variable is assigned a value it is then **initialized**, variable without assignment are considered **uninitialized**.
     - Accessing an uninitialized variable via a `printf` reference could lead to and is called "undefined behavior".
     - Initializer: The value or expression used to assign an initial value to a variable at the time it is declared.
         - Ex. `int num = 5;` -> `5` is the **initializer**
@@ -130,7 +130,7 @@ int main(void)
 ## 2.8 Layout of a C Program
 
 - Tokens: Groups of characters that can't be split up without changing their meaning.
-    - Identifiers, keywords, operators, and punctuation are all tokens.
+    - Identifiers, keywords, operators (+, -), and punctuation are all tokens.
 
 ![alt text](images/image-1.png)
 
