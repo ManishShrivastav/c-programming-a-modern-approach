@@ -37,6 +37,9 @@ int main(void)
 ## 2.2 The General Form of a Simple Program
 
 - Directives: Commands intended for the preprocessor prior to compilation.
+    ```c
+    #include <stdio.h>
+    ```
     - Always begin with a `#` character.
     - One line long, no semicolon.
 
