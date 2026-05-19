@@ -151,6 +151,6 @@
     j = i * i++;
 ```
 
-    - It might seem straightforward to assume `j=4`, but in reality, `j` exhibits undefined behavior depending on the compiler and its evaluation strategy. If the expression were interpreted left-to-right, `i++` would first fetch `i=2` and insert that value into the expression at that point. Due to the postfix nature of `i++`, `i` is then incremented to `i=3`. The next (plain) `i` is fetched afterward, now holding the value 3. This simplifies the expression to `j = 3 * 2 = 6`.
+- It might seem straightforward to assume `j=4`, but in reality, `j` exhibits undefined behavior depending on the compiler and its evaluation strategy. If the expression were interpreted left-to-right, `i++` would first fetch `i=2` and insert that value into the expression at that point. Due to the postfix nature of `i++`, `i` is then incremented to `i=3`. The next (plain) `i` is fetched afterward, now holding the value 3. This simplifies the expression to `j = 3 * 2 = 6`.
 
 ## 4.5 Expression Statements
