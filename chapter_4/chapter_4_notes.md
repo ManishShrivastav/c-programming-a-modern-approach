@@ -56,6 +56,102 @@
                 - + i   is equivalent to    -(+i)
                 ```
 
+**NOTE:**
+In C, the `%` operator is defined by:
+
+```text
+a % b = a - (a / b) * b
+```
+
+For:
+
+```c
+-9 % 7
+```
+
+we first evaluate:
+
+```c
+-9 / 7
+```
+
+In C89, division involving negative numbers is implementation-defined, so:
+
+```text
+-9 / 7
+```
+
+could be either:
+
+```text
+-1   (truncate toward 0)
+```
+
+or
+
+```text
+-2   (round toward -∞)
+```
+
+---
+
+## Case 1: `-9 / 7 == -1`
+
+```text
+-9 % 7
+= -9 - (-1 * 7)
+= -9 + 7
+= -2
+```
+
+Result:
+
+```text
+-2
+```
+
+---
+
+## Case 2: `-9 / 7 == -2`
+
+```text
+-9 % 7
+= -9 - (-2 * 7)
+= -9 + 14
+= 5
+```
+
+Result:
+
+```text
+5
+```
+
+---
+
+Therefore, in C89:
+
+```c
+-9 % 7
+```
+
+could evaluate to either:
+
+```text
+-2 or 5
+```
+
+depending on the implementation.
+
+---
+
+In C99 and later, integer division always truncates toward zero:
+
+```c
+-9 / 7 == -1
+-9 % 7 == -2
+```
+
 ## 4.2 Assignment Operators
 - Simple Assignment (=): The effect of the assignment `v = e` is to evaluate the expression `e` and copy its value into `v`.
     - Ex.
