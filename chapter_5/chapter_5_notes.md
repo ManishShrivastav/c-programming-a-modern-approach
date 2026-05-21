@@ -128,32 +128,32 @@
                     printf("Error: y is equal to 0\n");
         ```
         - The `else` belongs to the inner `if` statement. But our print string reflects the outer variable conditional check, so this would be wrong.
-    - **Best Practice fix**: Always use braces to avoid confusion
-    -   ```c
-            if (y != 0)
-            {
-                if (x != 0)
+    - *Best Practice fix*: Always use braces to avoid confusion
+        -   ```c
+                if (y != 0)
                 {
-                    result = x / y;
-                }
-                else
-                {
-                    printf("Error: x is zero\n");
-                }
-            }
-        ```
-    - Or To make the else clause part of the outer if statement, we can enclose the inner if statement in braces:
-    - Ex.   
-        ```c
-                if (y != 0) 
-                    {
                     if (x != 0)
+                    {
                         result = x / y;
-                    } 
-                else
-                    printf("Error: y is equal to 0\n");
-        ```
-- Conditional Expressions: A shorthand way to write an `if-else` statement that returns a value.
+                    }
+                    else
+                    {
+                        printf("Error: x is zero\n");
+                    }
+                }
+            ```
+        - Or To make the else clause part of the outer if statement, we can enclose the inner if statement in braces:
+        - Ex.   
+            ```c
+                    if (y != 0) 
+                        {
+                        if (x != 0)
+                            result = x / y;
+                        } 
+                    else
+                        printf("Error: y is equal to 0\n");
+            ```
+- **Conditional Expressions**: A shorthand way to write an `if-else` statement that returns a value.
     - Conditional Operator: Consists of two symbols (`?` and `:`), which must be used together in the following way: `expr1 ? expr2: expr3`.
         - Requires three oprands instead of one or two, often referred to as a terneray operator.
         - Should be read `"if expr1 then expr2 else expr3"`.
@@ -164,25 +164,149 @@
             k = i > j ? i : j;          /* k is now 2 */
             k = (i >= 0 ? i : 0) + j;   /* k is now 3 */
         ```
-- **Boolean Values in C89**: There is no Boolean type defined in C89.
-    - Define a variable as `int` and assign either 0 or 1.
-        - Is not very readable and values that "not allowed" can still be assigned by accident.
-        - Define **macros** with names such as `TRUE` and `FALSE`.
-            - Ex. `#define TRUE 1`--> `flag = TRUE` --> flag has value of 1.
-    - Define a custom `bool` type masked as am `int`.
-        - Ex. `#define BOOL int` --> `BOOL flag` --> flag, a variable, now is defined as `BOOL` which acts as an `int` under the hood.
+- **Boolean Values in C89**: There is no built-in Boolean type in C89.
+  - Programmers typically use an `int` variable and assign either `0` or `1`.
+    - This approach is less readable, and values other than `0` and `1` can still be assigned accidentally.
+  
+  - A common improvement is to define macros such as `TRUE` and `FALSE`.
+    - Example:
+      ```c
+      #define TRUE 1
+      #define FALSE 0
+      ```
+
+    - Usage:
+      ```c
+      flag = TRUE;
+      ```
+      - `flag` now stores the value `1`.
+
+  - Another approach is to define a custom Boolean type using a macro.
+    - Example:
+      ```c
+      #define BOOL int
+      ```
+
+    - Usage:
+      ```c
+      BOOL flag;
+      ```
+      - `flag` is declared as type `BOOL`, which is actually an `int` underneath.
 - **Boolean Values in C99**: C99 provides the `_Bool` type.
-    - `_Bool`: An integer type (more precisely, an unsigned integer type), so a `_Bool` variable is really just an integer variable in disguise.
-        - Can only be assigned a value of 0 or 1.
-            - Attempting to store a non-zero value will default to 1.
-    - Ex. `_Bool flag; flag = 5` --> The variable `flag` is of type `_Bool` and has a value of 1.
-    - Can be tested with an `if` statement.
-        - Ex. `if (flag) {....}` --> Tests whether flag is 1.
-    - `<stdbool.h>`: Header file added with macro definitions for `_Bool` readability.
-        - `bool`: A macro that equals `_Bool`.
-        - `true`: A macro which equates to a value of 1.
-            - Ex. `flag = true;`
-        - `false`: A macro which equates to a value of 0.
-            - Ex. `flag = false:`
+  - `_Bool`: An integer type that can store only the values `0` or `1`.
+    - Attempting to store a non-zero value will automatically convert it to `1`.
 
+  - Example:
+    ```c
+    _Bool flag;
+    flag = 5;
+    ```
+    - The variable `flag` is of type `_Bool` and will store the value `1`.
 
+  - A `_Bool` value can be tested directly in an `if` statement.
+    - Example:
+      ```c
+      if (flag)
+      {
+          ...
+      }
+      ```
+      - This condition evaluates to true when `flag` is `1`.
+
+  - `<stdbool.h>`: A header file introduced in C99 that improves Boolean readability through macros.
+    - `bool`: A macro that expands to `_Bool`.
+    - `true`: A macro that expands to `1`.
+      - Example:
+        ```c
+        flag = true;
+        ```
+
+    - `false`: A macro that expands to `0`.
+      - Example:
+        ```c
+        flag = false;
+        ```
+
+## 5.3 The `switch` Statement
+
+- **`switch` Statement**: An alternative to the cascaded `if` statement.
+```c
+    switch (grade)
+    {
+        case 4: printf ("Excellent");
+                break;
+        case 3: printf("Good");
+                break;
+        case 2: printf ("Average");
+                break;
+        case 1: printf("Poor");
+                break;
+        case 0: printf("Failing");
+                break;
+        default: printf("Illegal grade");
+                break;
+    }
+```
+- The variable `grade` is compared against the values 4, 3, 2, 1, and 0.
+    - If `grade` matches one of the `case` labels, the corresponding statements are executed.
+    - The `break` statement prevents execution from continuing into the next `case`.
+- General form of a switch statement:
+    -   ```c
+        switch (expression){
+            case constant-expression: statements
+            ....
+            case constant-expression: statements
+            default: statements
+        }
+        ```
+- **Controlling Expression**: The word `switch` must be followed by an integer expression enclosed in parentheses.
+  - Since characters are treated as integers in C, they can also be used in `switch` statements.
+  - Floating-point values and strings cannot be used as controlling expressions.
+
+- **Case Labels**: Each case begins with a label of the form:
+  ```c
+  case constant-expression:
+  ```  
+- **Constant Expression**: Similar to a normal expression, except that it cannot contain variables or function calls.
+    - A constant expression used in a case label must evaluate to an integer value.
+    - Character constants are also allowed.
+    - Examples:
+        - 5 → valid constant expression
+        - 5 + 10 → valid constant expression
+        - n + 10 → not a constant expression
+            - Unless n is a macro representing a constant value
+
+- **Statements**: Each `case` label may be followed by any number of statements.
+  - Braces are not required around the statements within a `case`.
+  - The last statement in a `case` block is usually a `break` statement.
+
+- **Role of the `break` Statement**:
+    - Executing a `break` statement immediately exits the `switch` statement.
+    - Program execution then continues with the first statement following the `switch`.
+
+    - The reason `break` is needed is that a `switch` statement behaves like a form of computed jump.
+    - After the controlling expression is evaluated, control jumps directly to the matching `case` label.
+    - A `case` label is simply a marker indicating a position within the `switch`.
+
+    - Once the statements for a `case` finish executing:
+    - Control automatically continues into the next `case` unless a `break` statement is encountered.
+    - This behavior is known as **fall-through**.
+
+    - Without a `break` statement (or another jump statement such as `return`), execution flows from one `case` into the next.
+
+- Example without `break`:
+    - Ex.
+        ```c
+            switch (grade)
+            {
+                case 4: printf ("Excellent");
+                case 3: printf("Good");
+                case 2: printf ("Average");
+                case 1: printf("Poor");
+                case 0: printf("Failing");
+                default: printf("Illegal grade");
+            }
+        ```
+        - Here,
+            - If the value of grade is 3, the message printed is
+            `GoodAveragePoorFailingIllegal grade`
