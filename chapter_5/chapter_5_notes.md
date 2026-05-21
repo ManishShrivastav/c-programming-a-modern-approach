@@ -33,4 +33,23 @@
 | `==`   | Equal to     | `5 == 5` | `1`    |
 | `!=`   | Not equal to | `5 != 3` | `1`    |
 
+- **Logical Operators**: More complicated logical expressions can be built from simpler ones by using `and`, `or`, and `not`.
+    - The `!` operator is **unary**, while `&&` and `||` are binary.
+    - `!expr` has the value of `1` if the `expr` have value of `0`.
+    - `expr1 && expr2` has the value of `1` if the values of `expr1` and `expr2` are both non-zero.
+    - `expr1 || expr2` has the value of `1` if either `expr1` or `expr2` or both has a non-zero value.
+    - `!` operator has the same precedence as the unary `+` (plus) and `-` (minus) operators.
+    - `&&` and `||` precedence is lower than that of the relational and equality operators;
+        - Ex. `i < j && k == m` means `(i < j) && (k == m)`.
+    - The `!` operator is right associative; `&&` `||` are left associative.
+
+| Symbol | Meaning     | Example    | Result |
+| ------ | ----------- | ---------- | ------ |
+| `&&`   | Logical AND | `1 && 1`   | `1`    |
+| `\|\|` | Logical OR  | `1 \|\| 0` | `1`    |
+| `!`    | Logical NOT | `!1`       | `0`    |
+
+- **Short Circuiting**: Within a logical expression, the first condition evaluated can dictate the behavior of continuing the rest of the evaluation.
+    - Ex. `(i != 0) && (j / i > 0)` --> if `i != 0` evaluates to False, meaning `i = 0`, then the right side `(j / i > 0)` is not evaluated.
+
 
