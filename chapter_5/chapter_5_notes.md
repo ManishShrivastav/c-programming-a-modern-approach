@@ -52,4 +52,105 @@
 - **Short Circuiting**: Within a logical expression, the first condition evaluated can dictate the behavior of continuing the rest of the evaluation.
     - Ex. `(i != 0) && (j / i > 0)` --> if `i != 0` evaluates to False, meaning `i = 0`, then the right side `(j / i > 0)` is not evaluated.
 
+## The `if` Statement
+- **`if` Statement**: allows a program to choose between two alternatives by testing the value of an expression.
 
+    ```c
+        if (expression) statement;
+    ```
+    - If the value of expression is non-zero, which C interprets as true, the statement after the parentheses is executed.
+- Parentheses around the expression are mandatory; they'are part of the `if` statement, and not part of the expression.
+- Compound Statement: An `if` statement that controls two or more staements.
+
+    - ```c
+        { statements }
+      ```
+
+    - ```c
+        if (line_num == MAX_LINES)
+        {
+            line_num = 0;
+            page_num++;
+        }
+      ```
+- The `else` Clause: The statement that follows the word `else` is executed if the expression in parentheses has the value of `0`.
+    -   ```c
+            if (expression) statement else statement
+        ```
+    -   ```c
+            if (i > j)
+                max = i;
+            else
+                max = j;
+        ```
+    -   ```c
+            if (i > j)
+                if (i > k)
+                    max = i;
+                else
+                    max = k;
+            else
+                if (j > k)
+                    max = j;
+                else
+                     max = k;
+        ```
+    -   ```c
+            if (i > j)
+            {
+                if (i > k)
+                {
+                    max = i;
+                }
+                else
+                {
+                    max = k;
+                }
+            }
+            else
+            {
+                if (j > k)
+                {
+                    max = j;
+                }
+                else
+                {
+                    max = k;
+                }
+            }
+        ```
+- The dangling `else` problem occurs when nested `if` statements are written without braces, causing the `else` to attach to the nearest unmatched `if`. This can lead to logic errors because the intended grouping may differ from how C actually interprets the code.
+    -   ```c
+                if (y != 0)
+                    if (x != 0)
+                        result = x / y;
+                else
+                    printf("Error: y is equal to 0\n");
+        ```
+        - The `else` belongs to the inner `if` statement. But our print string reflects the outer variable conditional check, so this would be wrong.
+    - **Best Practice fix**: Always use braces to avoid confusion
+    -   ```c
+            if (y != 0)
+            {
+                if (x != 0)
+                {
+                    result = x / y;
+                }
+                else
+                {
+                    printf("Error: x is zero\n");
+                }
+            }
+        ```
+- Conditional Expressions: A shorthand way to write an `if-else` statement that returns a value.
+    - Conditional Operator: Consists of two symbols (`?` and `:`), which must be used together in the following way: `expr1 ? expr2: expr3`.
+        - Requires three oprands instead of one or two, often referred to as a terneray operator.
+        - Should be read `"if expr1 then expr2 else expr3"`.
+    -   ```c
+            int i, j, k;
+            i = 1;
+            j = 2;
+            k = i > j ? i : j;          /* k is now 2 */
+            k = (i >= 0 ? i : 0) + j;   /* k is now 3 */
+        ```
+    
