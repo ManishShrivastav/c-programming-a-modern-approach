@@ -142,6 +142,17 @@
                 }
             }
         ```
+    - Or To make the else clause part of the outer if statement, we can enclose the inner if statement in braces:
+    - Ex.   
+        ```c
+                if (y != 0) 
+                    {
+                    if (x != 0)
+                        result = x / y;
+                    } 
+                else
+                    printf("Error: y is equal to 0\n");
+        ```
 - Conditional Expressions: A shorthand way to write an `if-else` statement that returns a value.
     - Conditional Operator: Consists of two symbols (`?` and `:`), which must be used together in the following way: `expr1 ? expr2: expr3`.
         - Requires three oprands instead of one or two, often referred to as a terneray operator.
@@ -153,4 +164,25 @@
             k = i > j ? i : j;          /* k is now 2 */
             k = (i >= 0 ? i : 0) + j;   /* k is now 3 */
         ```
-    
+- **Boolean Values in C89**: There is no Boolean type defined in C89.
+    - Define a variable as `int` and assign either 0 or 1.
+        - Is not very readable and values that "not allowed" can still be assigned by accident.
+        - Define **macros** with names such as `TRUE` and `FALSE`.
+            - Ex. `#define TRUE 1`--> `flag = TRUE` --> flag has value of 1.
+    - Define a custom `bool` type masked as am `int`.
+        - Ex. `#define BOOL int` --> `BOOL flag` --> flag, a variable, now is defined as `BOOL` which acts as an `int` under the hood.
+- **Boolean Values in C99**: C99 provides the `_Bool` type.
+    - `_Bool`: An integer type (more precisely, an unsigned integer type), so a `_Bool` variable is really just an integer variable in disguise.
+        - Can only be assigned a value of 0 or 1.
+            - Attempting to store a non-zero value will default to 1.
+    - Ex. `_Bool flag; flag = 5` --> The variable `flag` is of type `_Bool` and has a value of 1.
+    - Can be tested with an `if` statement.
+        - Ex. `if (flag) {....}` --> Tests whether flag is 1.
+    - `<stdbool.h>`: Header file added with macro definitions for `_Bool` readability.
+        - `bool`: A macro that equals `_Bool`.
+        - `true`: A macro which equates to a value of 1.
+            - Ex. `flag = true;`
+        - `false`: A macro which equates to a value of 0.
+            - Ex. `flag = false:`
+
+
