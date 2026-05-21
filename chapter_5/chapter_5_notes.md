@@ -19,10 +19,18 @@
 
 | Symbol | Meaning                  | Example  | Result |
 | ------ | ------------------------ | -------- | ------ |
-| `<`    | Less than                | `3 < 5`  | `1` (true)   |
+| `<`    | Less than                | `3 < 5`  | `1` (true)  |
 | `>`    | Greater than             | `7 > 2`  | `1` (true)  |
-| `<=`   | Less than or equal to    | `4 <= 4` | `1` (true)    |
-| `>=`   | Greater than or equal to | `6 >= 9` | `0`  (false)  |
+| `<=`   | Less than or equal to    | `4 <= 4` | `1` (true)  |
+| `>=`   | Greater than or equal to | `6 >= 9` | `0` (false) |
 
+- **Equality Operators**: Test equality between two expressions or values. Left associative and product either `0` (false) or `1` (true).
+    - Have lower precedence that the relational operators.
+        - Ex. `i < j == j < k` means `(i < j) == (j < k)` --> Entire statements is true if **both** the `left` and `right` are true or false.
+
+| Symbol | Meaning      | Example  | Result |
+| ------ | ------------ | -------- | ------ |
+| `==`   | Equal to     | `5 == 5` | `1`    |
+| `!=`   | Not equal to | `5 != 3` | `1`    |
 
 
