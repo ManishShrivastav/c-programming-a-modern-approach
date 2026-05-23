@@ -66,14 +66,14 @@ int main(void)
             case 8: ones = "eight"; break;
             case 9: ones = "nine"; break;
         }
-        
+
         if (tens_digit == 0)
             printf("You entered the number %s.\n", ones);
         else if (ones_digit == 0)
             printf("You entered the number %s.\n", tens);
         else
             printf("You entered the number %s-%s.\n", tens, ones);
-    }    
+    }
+
     return 0;
-    
 }
