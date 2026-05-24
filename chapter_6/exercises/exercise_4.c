@@ -41,7 +41,7 @@
 
         So (c) is NOT equivalent to (a) and (b) in terms of how i changes during execution.
 
-        FINAL ANSWER (plain text):
+        FINAL ANSWER:
 
         (c) is not equivalent to (a) and (b) because in (c) the condition uses i++ (post-increment), which increments i 
         during the condition check, causing i to start the loop body from 1 instead of 0, whereas 
