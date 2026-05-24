@@ -20,5 +20,7 @@ What output does the following program fragment produce?
     {
         printf("%d ", i);
         i /= 10;
-    } while (i > 0);    
+    } while (i > 0);  
+    
+    return 0;
  }
