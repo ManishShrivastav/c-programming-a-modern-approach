@@ -252,6 +252,81 @@
 - `putchar(ch)`: Writes a single character to the terminal.
 
 ## 7.4 Type Conversion
+- Implicit Conversion: Conversions that the compiler does for you during arithmetic that can be safely assumed, like adding a 16-bit short and a 32-bit int, the compiler will convert the short to 32-bit, int + float = float, etc.
+    - When the operands in an arithmetic or logical expression don't have the same type. (C performs what are known as the usual arithmetic conversions.)
+    - When the type of the expression on the right side of an assignment doesn't match the type of the variable on the left side.
+    - When the type of an argument in a function call doesn't match the type of the corresponding parameter.
+    - When the type of the expression in a return statement doesn't match the function's return type.
+    - In **C**:
+        ```text
+           1. long long int, usigned long long int
+           2. long int, usigned long int
+           3. int, unsigned int
+           4. short int, unsigned short int
+           5. char, signed char, usigned char
+           6. _Bool
+        ```
+- Usual Arithmetic Conversions: Convert operands to the "narrowest" type that will safely accommodate both values. (Roughly speaking, one type is narrower than another if it requires fewer bytes to store.)
+
+    - Promotion: converting the operand of the narrower type to the type of the other operand.
+    - **C89**:
+        - a. The type of either operand is a floating type:
+            ```text
+                        float --> double --> long double
+            ```
+        - b. The type of either operand is a floating type:
+            ```text
+                    int --> unsigned int --> long int --> unsigned long int
+            ```
+    - **C99**:
+        - a. The type of either operand is a floating type. As long as neither operand has a complex type, the rules are the same as before.
+        - b. Neither operand type is a floating type. First perform integer promotion on both operands. If the types of the two operands are now the same, the process ends. Otherwise, use the following rules, stopping at the first one that applies:
+            - If both operands have signed types or both have unsigned types, convert the cast expression operand whose type has lesser integer conversion rank to the type of the operand with greater rank.
+            - If the unsigned operand has rank greater or equal to the rank of the type of the signed operand, convert the signed operand to the type of the unsigned operand.
+            - If the type of the signed operand can represent all of the values of the type of the unsigned operand, convert the unsigned operand to the type of the signed operand.
+            - Otherwise, convert both operands to the unsigned type corresponding to the type of the signed operand.
+- Explicit Conversion: Programmed conversions using the cast operator.
+    ```c
+        char c;
+        short int s;
+        int i;
+        unsigned int u;
+        long int l;
+        unsigned long int ul;
+        float f;
+        double d;
+        long double ld;
+
+        i = i + c;          /* c is converted to int                        */
+        i = i + s;          /* s is converted to int                        */
+        u = u + i;          /* i is converted to unsigned int               */
+        l = l + u;          /* u is converted to long int                   */
+        ul = ul + l;        /* l is converted to unsigned long int          */
+        f = f + ul;         /* ul is converted to float                     */
+        d = d + f;          /* f is converted to double                     */
+        ld = ld + d;        /* f is converted to long double                */
+    ```
+- Conversion During Assignment: C follows the simple rule that the expression on the right side of the assignment is converted to the type of the variable on the left side. If the variable's type is at least as "wide" as the expression's,
+    ```c
+        char c;
+        int i;
+        float f;
+        double d;
+
+        i = c;          /* c is converted to int        */
+        f = i;          /* i is converted to flaot      */
+        d = f;          /* f is converted to double     */
+    ```
+- Casting:
+    ```text
+        (type-name) expression
+    ```
+    - `type-name`: specifies the type to which the expression should be converted.
+        ```c
+            float f, frac_part;
+            frac_part = f - (int) f;
+        ```
+
 
 ## Type Definitions
 
