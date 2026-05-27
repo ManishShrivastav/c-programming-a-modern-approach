@@ -334,3 +334,17 @@
     - C99 `<stdint.h>` uses `typedef` to define names for integer types with a particular number of bits. For example, `int32_t` is a signed integer type with exactly 32 bits.
 
 ## 7.6 The `sizeof` Operator
+- `sizeof`: Operator allows a program to determine how much memory is required to store values of a praticular type.
+    - `sizeof ( type-name )`
+    - The value of the expression `sizeof ( type-name )` is an unsigned integer representing the number of bytes required to store a value belonging to type-name.
+    - `sizeof (char)` is always 1, but the sizes of the other types may vary.
+    - On a 32-bit machine, `sizeof ( int ) is normally 4.
+    - Note that `sizeof` is a rather unusual operator, since the compiler itself can usually determine the value of a `sizeof` expression.
+    - In **C89** cast the `sizeof` result to `unsigned long` before printing with the `%lu` converison specifier.
+    ```c
+        printf("Size of int: %lu\n", (unsigned long) sizeof(int));
+    ```
+    - In **C99** no cast is needed, just print with `z` prefix to the typical `%u` integer code(s).
+    ```c
+        printf("Size of int: %zu\n", sizeof(int));  /* C99 only */
+    ```
