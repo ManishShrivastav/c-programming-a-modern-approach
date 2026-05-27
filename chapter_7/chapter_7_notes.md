@@ -328,6 +328,9 @@
         ```
 
 
-## Type Definitions
+## 7.5 Type Definitions
+- Type Definition: Defining custom named types. `typedef int Bool;`.
+- Special `_t` Types: The C library itself uses `typedef` to create names for types that can vary from one C implementation to another; these types often have names that end with `t`, such as `ptrdiff_t`, `size_t`, and `wchar_t`.
+    - C99 `<stdint.h>` uses `typedef` to define names for integer types with a particular number of bits. For example, `int32_t` is a signed integer type with exactly 32 bits.
 
 ## 7.6 The `sizeof` Operator
