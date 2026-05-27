@@ -104,7 +104,67 @@
         - `ll` in front of `d`, `o`, `u`, or `x`
 
 ## 7.2 Floating Types
+- Three Floating Point Types:
+    1. `float`: Single-precision floating-point
+        -  suitable when the amount of precision isn't critical (calculating temperatures to one decimal point, for example).
+    1. `double`: Double-precision floating-point
+        - provides greater precision that `float`, enough for most programs.
+    1. `long double`: Extended-precision floating-point
+        - Provides the ultimate precision and is rarely used.
 
+- IEEE Floating-Point Standard: Specifications followed by computers regarding floating-point values.
+    - Numbers are stored in a form of scientific notation, with each number having three parts: a **sign**, an **exponent**, and a **fraction**.
+        - Exponent: The number of bits reserved determines how large or small numbers can be.
+        - Fraction: Determines the precision.
+    - IEEE Standard 754, developed by the **Institute of Electrical and Electronics Engineers**, provides two primary formats for floating-point numbers: 
+        1. single precision (32 bits)
+            - Exponent is 8 bits long (1 byte).
+            - Fraction is 23 bits long.
+            - Sign is 1 bit.
+            - Max value = 3.40E10**38 w/ ~6 decimal digits.
+        2. double precision (64 bits)
+        3. single extended precision (at least 43 bits)
+        4. double extended precision (at least 79 bits)
+    
+    | Type   | Smallest Positive Value | Largest Value            | Precision        |
+    |--------|--------------------------|--------------------------|------------------|
+    | float  | 1.17549 × 10⁻³⁸         | 3.40282 × 10³⁸          | ~6–7 digits      |
+    | double | 2.22507 × 10⁻³⁰⁸        | 1.79769 × 10³⁰⁸         | ~15–16 digits    |
+
+- `<float.h>`: Provides macros on float bit length characteristics.
+
+- C99 Two Floating Type Categories:
+    1. Real Floating Types:
+        - `float`
+        - `double`
+        - `long double`
+    2. Complex Types:
+        - `float_Complex`
+        - `double_Complex`
+        - `long double_Complex`
+        
+- Floating Constants: Must contain a decimal point and/or an exponent; the exponent indicates the power of 10 by which the number is to be scaled. If an exponent is present, it must be preceded by the letter E (or e). An optional + or - sign may appear after the E (or e).
+    - 57.0 or 57. or 57.0e0 or 57E0 or 5.7e1 or 5.7e+1 or .57e2 or 570.e-1
+    - Automatically stored as `double-precision` numbers in memory for easy conversion to `float` if need.
+    - Force `float` format append "F" or "f" to the end of the constant.
+    - Force `long double` format append "L" or "l" to the end of the constant.
+    - In C99, hexadecimals begin with "Ox" or "OX".
+
+- Reading and Writing Floating-Point Numbers
+    - `%e`, `%f`, `%g` are used for reading and writing single-precision floating-point numbers (Chapter 3).
+    - For READING (`scanf`):
+        - `double` prefix with `l`
+        ```c
+            double d;
+            scanf("%lf", &d);
+        ```
+
+        - `long double` prefix with `L`
+        ```c
+            long double ld;
+            scanf("%Lf", &ld);
+            printf("%Lf", ld);
+        ```
 
 ## 7.3 Character Types
 
