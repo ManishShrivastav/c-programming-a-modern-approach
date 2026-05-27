@@ -167,6 +167,89 @@
         ```
 
 ## 7.3 Character Types
+- `char` Type: The values can vary from one computer to another, because different machines may have different underlying character sets.
+    - Can be assigned any single character:
+    ```c
+        ch = 'a'        /* lower-case a */
+        ch = 'A'        /* upper-case A */
+        ch = '0'        /* zero         */
+        ch = ' '        /* space        */
+    Notice that character constants are enclosed in single quotes, not double quotes.
+    ```
+- Character Sets:
+    - ASCII (American Standard Code for Information Exchange), a 7-bit code capable of representing 128 characters.
+        - Character codes range from 0000000 - 1111111. We can think of these as integers ranging from 0 to 127.
+        - The digits 0 to 9 are represented by the codes 0110000 - 0111001, and the upper case letters A to Z are represented by 1000001 - 1011010.
+        - **Latin -1** is an extension to 256-characters necessary for Western European and many African languages.
+        ```c
+            char ch;
+            int i;
+
+            i = 'a';                /* i is now 97      */
+            ch = 65;                /* ch is now 'A'    */
+            ch = ch + 1;            /* ch is now 'B'    */
+            ch++;                   /* ch is now 'C'    */
+        ```
+        - `char` is usually just an `int` so we can compare using logical opetrators like `<`, `>`, `<=`, `>=`.
+- **Signed and Unsigned Characters**: Since C allows characters to be used as integers, it shouldn't be surprising that the char type-like the integer types exists in both signed and unsigned versions.   
+    - Signed characters normally have values between -128 and 127.
+    - Unsigned characters have values between 0 and 255.
+
+- C89 uses the term **intergral types** to refer to both the integer types and the character types. Enumerated types are also integral types.
+- C99 does use the term **integral types**, instead it expands the meaning of "integer types" to include the character types and the enumerated types. C99's `_Bool` type is considered to be an unsigned integer type.
+
+- Arithmetic Types: The integer types and floating types are collectively known as arithmetic types.
+    - Summary of the arithmetic types in C89, divided into categories and sub-categories:
+        1. Integral Types
+            - `char`
+            - Signed integer types
+            - Unsigned intger types
+            - Enumerated types
+        2. Floating types
+    - C99
+        1. Integral Types
+            - `char`
+            - Signed integer types
+            - Unsigned intger types
+            - Enumerated types
+        2. Floating types
+            - Real floating types
+            - Complex types
+
+- Escape Sequences: A special notation so that programs can deal with every character in the underlying character set.
+    1. Character Escapes
+
+    | Name              | Escape Sequence |
+    |-------------------|-----------------|
+    | Alert (bell)      | \a              |
+    | Backspace         | \b              |
+    | Form feed         | \f              |
+    | New line          | \n              |
+    | Carriage return   | \r              |
+    | Horizontal tab    | \t              |
+    | Vertical tab      | \v              |
+    | Backslash         | \\              |
+    | Question mark     | \?              |
+    | Single quote      | \'              |
+    | Double quote      | \"              |
+
+    2. Numerical Escapes:
+
+        - Octal Escape Sequence: Consists of the \ character followed by an octal number with at most three digits. (This number must be representable as an unsigned character, so its maximum value is normally 377 octal.) For example, the escape character could be written \ 3 3 or \033. Octal numbers in escape equences-unlike octal constants— don't have to begin with 0.
+        - Hexadecimal Escape Sequence: Consists of \x followed by a hexadecimal number. Although C places no limit on the number of digits in the hexadecimal number, it must be representable as an unsigned character (hence it can't exceed FF if characters are eight bits long). Using this notation, the escape character would be written \x1b or \x1B. The x must be in lower case, but the hex digits (such as b) can be upper or lower case.
+- `toupper()`: A function in C's `<ctype.h>` header file that convers a character value to its corresponding uppercase character value.
+- Reading and Writing Characters: `%` conversion specification allows `scanf` and `printf` to read and write single characters.
+    - `scanf` does not skip whitespace before reading a character, put a space into the format string to force skip of whitespace.
+    ```c
+        char ch;
+
+        scanf("%c", &ch);                   /* reads a single character */
+        printf("%c", ch);                   /* reads a single character */
+    ```
+- `ch = getchar()`: Reads one character from the terminal and returns.
+    - Returns and `int` value.
+    - Does not skip whitespace.
+- `putchar(ch)`: Writes a single character to the terminal.
 
 ## 7.4 Type Conversion
 
