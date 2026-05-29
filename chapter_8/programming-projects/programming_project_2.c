@@ -27,14 +27,14 @@ int main(void)
         repeated_digits_count[digits]++;
         n /= 10;
     }
-    
-    printf("Digit:\t\t  0  1  2  3  4  5  6  7  8  9\n");
-    printf("Occurrences:\t");
 
-    for (int i = 0; i < 10; i++)
-    {
-        printf("%3d", repeated_digits_count[i]);
-    }
+    printf ("Digit:\t\t");
+    for (digits = 0; digits <= 9; digits++)
+        printf("%3d", digits);
+    printf("\nOccurrences:\t");
+    for (digits = 0; digits <= 9; digits++)
+        printf("%3d", repeated_digits_count[digits]);
+    printf("\n");
 
     return 0;    
 }
