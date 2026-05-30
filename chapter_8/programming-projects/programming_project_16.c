@@ -1,0 +1,76 @@
+/*
+16.
+Write a program that tests whether two words are anagrams (permutations of the same let-
+ters):
+
+    Enter first word: smartest
+    Enter second word: mattress
+    The words are anagrams.
+
+    Enter first word: dumbest
+    Enter second word: stumble
+    The words are not anagrams.
+
+Write a loop that reads the first word, character by character, using an array of 26 integers to
+keep track of how many times each letter has been seen. (For example, after the word smart-
+est has been read, the array should contain the values 1 0 0 0 1 0 0 0 0 0 0 0 1 0 0 0 0 1 2 2 0
+0 0 0 0 0, reflecting the fact that smartest contains one a, one e, one m, one r, two s’s and
+two t’s.) Use another loop to read the second word, except this time decrementing the corre-
+sponding array element as each letter is read. Both loops should ignore any characters that
+aren’t letters, and both should treat upper-case letters in the same way as lower-case letters.
+After the second word has been read, use a third loop to check whether all the elements in
+the array are zero. If so, the words are anagrams. Hint: You may wish to use functions from
+<ctype.h>, such as isalpha and tolower.
+*/
+
+#include <stdio.h>
+#include <ctype.h>
+
+int main(void)
+{
+    int letters[26] = {0};
+    int ch, i;
+    int anagram = 1;
+
+    printf("Enter first word: ");
+
+    while ((ch = getchar()) != '\n')
+    {
+        if (isalpha(ch))
+        {
+            ch = tolower(ch);
+            letters[ch - 'a']++; // Increment the count for this letter
+        }        
+    }
+
+    printf("Enter second word: ");
+
+    while ((ch = getchar()) != '\n')
+    {
+        if (isalpha(ch))
+        {
+            ch = tolower(ch);
+            letters[ch - 'a']--; // Decrement the count for this letter
+        }        
+    }
+
+    for ( i = 0; i < 26; i++)
+    {
+        if (letters[i] != 0)
+        {
+            anagram = 0; // If any count is not zero, the words are not anagrams
+            break; // Exit the loop early since we already know they are not anagrams. This will exit the if statement and the for loop.
+        }
+    }
+
+    if (anagram)
+    {
+        printf("The words are anagrams.\n");
+    }
+    else
+    {
+        printf("The words are not anagrams.\n");
+    }
+    
+    return 0;    
+}
