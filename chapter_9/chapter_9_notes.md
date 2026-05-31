@@ -182,6 +182,14 @@
     - When used in `main` the `return` statement exits the program.
 
 ## 9.5 Program Termination
+- Omitting `return` type:
+    - Older C programs often omit the main function return type.
+    - C99, omitting the return type of a function is illegal.
+- `exit` Function: A function within the `<stdlib.h>`, with arguments passed to `exit` that have the same meaning as `main`'s return value. Both indicate the programs status at termination.
+    - `exit(0)`: Normal termination
+    - `exit(>0)`: Abnormal termination
+    - `EXIT_SUCCESS` and `EXIT_FAILURE` are macros defined within the `<stdlib.h>` that are implementation-defined, with typical values of `0` and `1` respectively.
+    - The difference between `return` and `exit` is that `exit` causes program termination regardless of which function calls it. The `return` statement causes program termination only when it appears in the main function.
 
 ## 9.6 Recursion
 
