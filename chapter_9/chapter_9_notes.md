@@ -192,4 +192,78 @@
     - The difference between `return` and `exit` is that `exit` causes program termination regardless of which function calls it. The `return` statement causes program termination only when it appears in the main function.
 
 ## 9.6 Recursion
+- Recursive Function: A function is recursive if it calls itself.
+    ```c
+         For n! = n x (n - 1)!
 
+                int fact (int n)
+                {
+                    if (n <= 1)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return n * fact(n - 1);
+                    }
+                }
+
+            i = fact(3);
+
+        Here is what happens:
+            fact(3) finds that 3 is not less that or equal to 1, so it calls
+                fact(2), which finds that 2 is not less that or equal to 1, so it calls
+                    fact(1), which finds that 1 is less than or equal to 1, so it returns 1, causing
+                fact(2) to return 2 x 1 = 2, causing
+            fact(3) to return 3 x 2 = 6.
+        
+        Notice how the  unfinished calls of fact() "pile up" until fact() is finally passed 1. At that point the old calls of fact() begin to "unwind" one by one, until the original call -fact(3) - finally returns with the answer 6.
+    ```
+
+    Formula:
+        $$ x^n = x \cdot x^{n-1} $$
+
+    ```c
+                int power(int x, int n)
+                {
+                    if (n == 0)
+                    {
+                        return 1;
+                    }
+                    else
+                    {
+                        return x * power(x, n - 1)
+                    }
+                }
+        
+        The call power(5, 3) would be executed as follows:
+            power(5, 3) finds that 3 is not equal to 0, so it calls
+                power(5, 2), which finds that 2 is not equal to 0, so it calls
+                    power(5, 1), which finds that 1 is not equal to 0, so it calls
+                        power(5, 0), which finds that 0 is equal to 0, so it returns 1, causing
+                    power(5, 1) to return 5 × 1 = 5, causing
+                power(5, 2) to return 5 × 5 = 25, causing
+            power(5, 3) to return 5 × 25 = 125.
+        Incidentally, we can condense the power function a bit by putting a conditional
+        expression in the return statement:
+                int power(int x, int n)
+                {
+                    return n == 0 ? 1 : x * power(x, n - 1);
+                }
+    ```
+- Termination Condition: A test that is evaluated as soon as a recursive function is called to either terminate the recursive calls or countinue to recurse.
+    - All recursive functions need some kind of termination condition in order to prevent infinite recursion.
+- Quicksort Algorithm: A sorting algorithm that is an example of the **divide and conquer** technique.
+    - Divide and Conquer: Large problems are divided into smaller pieces that are tackled by the same algorithm.
+
+        1. Choose an array element e (the “partitioning element”), then rearrange the array so that elements 1, ..., i – 1 are less than or equal to e, element i contains e, and elements i + 1, ..., n are greater than or equal to e.
+        2. Sort elements 1, ..., i – 1 by using Quicksort recursively.
+        3. Sort elements i + 1, ..., n by using Quicksort recursively.
+
+        ![alt text](image.png)
+        ![alt text](image-1.png)
+
+- Improving Quicksort:
+    1. Improving the partitioning algorithm.
+    2. Using a different method to sort small arrays (<= 25 elements).
+    3. Making Quicksort nonrecursive.
