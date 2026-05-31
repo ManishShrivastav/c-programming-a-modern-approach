@@ -174,9 +174,12 @@
     - `lvalues`, so that values of its elements can be changed.
     - Can make it **read-only** by adding `const`: `(const int[] {5, 4})`
             
-    
 
 ## 9.4 The `return` Statement
+- `return`: A statement that stops a function and returns back to where the function was called, wkth any value following the return keyword.
+    - If the type of the expression in a `return` statement doesn't match the function's return type, the expression will be implicitly converted to the return type.
+    - `return` statements may appear in functions whose return type is `void`, provided that no expression is given.
+    - When used in `main` the `return` statement exits the program.
 
 ## 9.5 Program Termination
 
