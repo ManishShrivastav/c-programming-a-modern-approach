@@ -260,8 +260,8 @@
         2. Sort elements 1, ..., i – 1 by using Quicksort recursively.
         3. Sort elements i + 1, ..., n by using Quicksort recursively.
 
-        ![alt text](image.png)
-        ![alt text](image-1.png)
+        ![alt text](images/image.png)
+        ![alt text](images/image-1.png)
 
 - Improving Quicksort:
     1. Improving the partitioning algorithm.
