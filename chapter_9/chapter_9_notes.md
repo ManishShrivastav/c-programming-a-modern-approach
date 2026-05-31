@@ -65,3 +65,120 @@
         - ```c
                 double average(double, double);
             ```
+
+## 9.3 Arguments
+
+### Arguments vs Parameters:
+- Parameters appear in function definitions; they're dummy names that represent values to be supplied when the function is called.
+- Arguments are expressions that appear in function calls:
+    - In C, arguments are **passed by value**: When a function is called, each argument is evaluated and its value assigned to the corresponding parameter.
+    - Since the parameter contains a **copy** fo the argument's value, **any changes made to the parameter during the execution of the function don't affect the argument**.
+
+### Argument Conversions:
+- C allows function calls in which the types of the arguments don't match the types of the parameters.
+    - **The compiler has encountered a prototype prior to the call**: The value of each argument is implicitly converted to the type of the corresponding parameter as if by assignment.
+    - **The compiler has not encountered a prototype prior to the call**: The compiler performs the default argument promotions:
+        1. `float` arguments are converted to `double`.
+        2. The integral promotions are performed, causing `char` and `short` arguments to be converted to `int`. In C99, the integer promotions are performed.
+
+### Array Arguments:
+- Arrays can be passed as arguments to functions, but their length information is not preserved.
+    - When an array is passed to a function, it decays to a pointer to its first element.
+    - Inside the function, the parameter is treated as a pointer, not an array.
+    - Calling `sizeof` on an array parameter therefore yields the size of the pointer (typically 8 bytes on a 64-bit system), not the size of the original array.
+    - ```c
+            int sum_array(int a[], int n)
+            {
+                int i, sum = 0;
+
+                for (i = 0; i < n; i++)
+                {
+                    sum += a[i];
+                }
+                return sum;
+            }
+
+        The prototype for sum_array has the following appearance:
+            int sum_array(int a[], int n);
+        As usual, we can omit the parameter names if we wish:
+            int sum_array(int [], int);
+        ```
+### Variable Length Array (VLA):
+- Using variables to dynamically set the length of arrays used as function parameters.
+    -   ```c
+                int sum_array(int n, int a[n])
+                {
+                    ....
+                }
+        ```
+    - Note that `n` is initialized before being used as a feature of the array parameter declaration.
+- Prototypes and Array Parameters:
+    ```c
+            int sum_array(int n, int a[n]);         /* version 1 */
+
+        Another possibility is to replace the array length by an asterisk (*):
+            int sum_array(int n, int a[*]);         /* version 2a */
+    ```
+    - The reason for using `*` notation is that parameter names are optional in function declarations. If the name of the first parameter is omitted, it wouldn't be possible to specify that the length of array is `n`, but the `*` provieds a clue that the length of array is related to parameters that come earlier in the list:
+        -   ```c
+                    int sum_array(int , int a[*]);         /* version 2b */
+
+                It is also legal to leave the brackets empty, as we normally  do when declaring an array parameter :
+
+                    int sum_array(int n, int a[]);         /* version 3a */
+                    int sum_array(int , int []);          /* version 3b */
+            ```
+    - Example:
+
+        ```c
+                int sum_two_dimensional_array(int n, int m, int a[n][m])
+                {
+                    int i, j, sum = 0;
+
+                    for (i = 0; i < n; i++)
+                    {
+                        for (j = 0; j < m; j++)
+                        {
+                            sum += a[i][j];
+                        }
+                    }
+                    return sum;
+                }
+            
+            Prototypes for this function include the following:
+                int sum_two_dimensional_array(int n, int m, int a[n][m]);
+                int sum_two_dimensional_array(int n, int m, int a[*][*]);
+                int sum_two_dimensional_array(int n, int m, int a[][m]);
+                int sum_two_dimensional_array(int n, int m, int a[][*]);
+        ```
+### Using `static` in Array Parameter Declarations:
+-   ```c
+            int sum_array(int a[static 3], int n)
+            {
+                ...
+            }
+    ```
+    - Putting `static` in front of the number 3 indicates that the length of a is guaranteed to be atleast 3.
+    - Using `static` in this way has no effect on the behavior of the program. The presence of `static` is merely a "hint" that may allow a C compiler to generate faster instructions for accessing the array.
+        - If the compiler knows that an array will always have a certain minimum length, it can arrange to "prefetch" these elements from memory when the function is called, before the elements are actually needed by statements within the function.
+    - Multidimensional Arrays: `static` can only be applied to the first dimension of the MD array.
+
+### Compound Literals:
+- An unnamed array that's created **on the fly** by simply specifying which elements it contains.
+    -   ```c
+                total = sum_array((int []) {3, 0, 3, 4, 1}, 5);
+
+            You can also specify the length by:
+                (int [4]) {1, 9, 2, 1} is equivalent to (int[]) {1, 9, 2, 1}
+        ```
+    - `lvalues`, so that values of its elements can be changed.
+    - Can make it **read-only** by adding `const`: `(const int[] {5, 4})`
+            
+    
+
+## 9.4 The `return` Statement
+
+## 9.5 Program Termination
+
+## 9.6 Recursion
+
