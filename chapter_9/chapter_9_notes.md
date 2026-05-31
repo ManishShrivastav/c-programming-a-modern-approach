@@ -51,3 +51,17 @@
                 (void) printf("Hi, Mom!\n");
             ```    
 
+## 9.2 Function Declarations
+- Implicit Declaration: When an older (C89) compiler assumes that a function returns an `int` ot the other/types of the parameters due to the functions not being defined prior to being read/used. Modern (C99) compilers will throw a compilation error.
+- Function Declaration: Provides the compiler with a brief glimpse at a function whose full definition will appear later. A function declaration resembles the first line of a function definition with a semicolon added at the end:
+    - ```c
+            return-type function-name (parameters);
+        ```
+    - AKA "Function Prototypes": A prototype provides a complete description of how to call a function:
+        - How many arguments to supply.
+        - What their types should be.
+        - What type of result will be returned.
+    - Function Prototypes don't have to specify the *names* of the function's parameters, as long as their *types* are present.
+        - ```c
+                double average(double, double);
+            ```
