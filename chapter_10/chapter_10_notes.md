@@ -79,7 +79,7 @@
                 else
                     contents[top++] = i;
             }
-            
+
             int pop(void)
             {
                 if (is_empty())
@@ -91,7 +91,20 @@
 
 
 ## 10.3 Blocks
+- Compound statements that can contain declarations of variables.
+    - Variables declared and initialized in the block of functions or condition logic etc. are local to that block.
+        - These variables have **Automatic Storage Duration**.
+        - Variables that belong to a block can be declared `static` to give it static storage duration.
 
+        ```c
+                if (i > j)
+                {
+                    /* swap values of i and j */
+                    int temp = i;
+                    i = j;
+                    j = temp;
+                }
+        ```
 
 ## 10.4 Scope
 
