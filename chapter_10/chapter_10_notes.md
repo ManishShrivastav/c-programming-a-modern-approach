@@ -38,9 +38,56 @@
 
         Since the local variable *i* has been declared *static*, it occupies the same memory location throughout the execution of the program. When *f* returns, *i* won't lose its value.
         
-        A static local variable still has block scope,so it's not visible to other functions. In a nutshell, a static variable is a place to hide data from other functions but retain it for future calls on the same function.             
+        A static local variable still has block scope, so it's not visible to other functions. In a nutshell, a static variable is a place to hide data from other functions but retain it for future calls on the same function.             
 
 ## 10.2 External Variables
+- Variables that are declared outside the body of any function.
+    - Sometimes called `global` variables.
+    - **Static Storage Duration**: External variables have Static Storage Duration just like local variables that have been declared `static`. A value stored in an external variable will stay there indefinitely.
+    - **File Scope**: An external variable has file scope: it is visible from its point of declaration to the end of the enclosing file.
+
+- Example of using external variables: A `stack` is a data structure where values can be accessed via the "top" or "end" of the stack: "pushed onto the top and "popped" from the top only.
+
+    ```c
+            #include <stdbool.h>    /* C99 only */
+
+            #define STACK_SIZE 100
+
+            /* external variables */
+            int contents[STACK_SIZE];
+            int top = 0;
+
+            void make_empty(void)
+            {
+                top = 0;
+            }
+
+            bool is_empty(void)
+            {
+                return top == 0;
+            }
+
+            bool is_full(void)
+            {
+                return top == STACK_SIZE;
+            }
+
+            void push(int i)
+            {
+                if (is_full())
+                    stack_overflow();
+                else
+                    contents[top++] = i;
+            }
+            
+            int pop(void)
+            {
+                if (is_empty())
+                    stack_underflow();
+                else
+                    return contents[--top];
+            }
+    ```
 
 
 ## 10.3 Blocks
