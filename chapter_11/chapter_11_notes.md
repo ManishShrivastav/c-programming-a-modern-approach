@@ -10,6 +10,7 @@
     ![alt text](images/image.png)
 
 - Pointer Variables: Specific variables used to house pointer memory addresses of other "variable" types.
+
     ![alt text](images/image1.png)
 
     - Declaring: `int *p`: --> p is a pointer variable capable of pointing to objects of type int.
@@ -37,7 +38,8 @@
     - If `p` is a pointer, the `*p` represents the object to which `p` currently points to.
     - As long as `p` points to `i`, `*p` is an alias for `i`. Not only does `*p` have the same value as `i`, but changing the value of `*p` also changes the value of `i`.
         - `*p` is an `lvalue`, so assignment to it is legal.
-        ![alt text](images/image2.png)
+        
+            ![alt text](images/image2.png)
 
 ## 11.3 Pointer Assignment
 
