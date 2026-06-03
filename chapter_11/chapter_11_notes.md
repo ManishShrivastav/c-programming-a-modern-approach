@@ -41,6 +41,8 @@
 
 ## 11.3 Pointer Assignment
 
+![alt text](images/image3.png)
+
 
 ## 11.4 Pointers as Arguments
 
