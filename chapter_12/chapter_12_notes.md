@@ -52,6 +52,9 @@
 
 
 ## 12.3 Using an Array Name as a Pointer
+- The name of an array can be used as a pointer to the first element in the array.
+
+![alt text](images/image6.png)
 
 
 ## 12.4 Pointers and Multidimensional Arrays
