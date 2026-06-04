@@ -44,6 +44,12 @@
 
 ## 12.2 Using Pointers for Array Processing
 
+![alt text](images/image4.png)
+
+- Combining the `*` and `++` Operators: When you combine the dereference operator `*` with increment/decrement (`++` / `--`) in C (or similar languages), the key operator precedence and when the increment happens.
+
+![alt text](images/image5.png)
+
 
 ## 12.3 Using an Array Name as a Pointer
 
