@@ -30,23 +30,24 @@ int main(void)
 
 void find_two_largest(const int *a, int n, int *largest, int *second_largest)
 {
-    const int *p;
+    const int *p = a;
     const int *end = a + n;
 
-    int max1, max2;
+    int max1 = *p;
+    int max2 = *p;
 
-    // 1st pass: find largest
-    max1 = *a;
-    for (p = a + 1; p < end; p++) {
-        if (*p > max1)
+    p++;
+
+    while (p < end) {
+        if (*p > max1) {
+            max2 = max1;
             max1 = *p;
-    }
-
-    // 2nd pass: find second largest (not equal to max1)
-    max2 = *a;
-    for (p = a; p < end; p++) {
-        if (*p != max1 && *p > max2) // only consider values not equal to max1
+        }
+        else if (*p > max2) {
             max2 = *p;
+        }
+
+        p++;
     }
 
     *largest = max1;
