@@ -268,8 +268,70 @@
             }
     ```
 
+## 13.5 Using the C String Library
+- Functions found in `<string.h>`
+    - String Copy `strcpy`:
+        ```c
+                char *strcpy(char *s1, const char *s2);
+        ```
+        - Copies the string `s2` into the string `s1` (To be precise, we should say " copies the string pointed to by `s2` into the array pointed to by `s1`). i.e., copies characters from `s2` to `s1` up to and including the first null character in `s2`.
+        - Returns `s1` (a pointer to the destination string). The string pointed to by `s2` isn't modified, so it's declared `const`.
+    - String N Copy `strncpy`:
+        ```c
+                strncpy(str1, str2, sizeof(str1));
+        ```
+        - Calling the `strncpy` function is a safer, albeit slower way to copy a string.
+        - Has a third argument that limits the number of characters that will be copied.
+    - String Length `strlen`:
+        ```c
+                size_t strlen(const char *s);
+        ```
+        - `size_t`: represents one of C's unsigned integer types.
+        - Returns the length of a string: the number of characters in `s` up to, but not including, the first `null` character.
+            ```c
+                    int len;
 
+                    len = strlen("abc");    /* len is now 3 */
+                    len = strlen("");       /* len is now 0 */
+                    strcpy(str1, "abc");    
+                    len = strlen("str1");    /* len is now 3 */
+            ```
+    - String Concatenation `strcat`:
+        ```c
+                char *strcat(char *s1, const char *s2);
+        ```
+        - Appends the contents of the string `s2` to the end of the string `s1`; it returns `s1` (a pointer to the resulting string).
+            ```c
+                    strcpy(str1, "abc");
+                    strcat(str1, "def");    /*  str1 now contains "abcdef"   */
+            ```
+    - String N Concatenation `strncat`:
+        ```c
+                strncat(str1, str2, sizeof(str1) - strlen(str1) - 1);
+        ```
+        - Safer but slower version of `strcat`.
+        - Has a third argument that limits the number of characters it will copy.
+    
+    - String Comparison Function `strcmp`:
+        ```c
+                int strcmp(const char *s1, const char *s2);
+        ```
+        - Compares the strings `s1` and `s2`, returning a value less than, equal to, or greater than 0, depending on whether `s1` is less than, equal to, or greater than `s2`.
+        ```c
+                if (strcmp(str1, str2) < 0)     /*  is str1 < str2? */
+            or
+                if (strcmp(str1, str2) <= 0)    /* is str1 <= str2? */
+        ```
+        - Compares strings based on their lexicographical ordering.
+            - The first i characters of `s1` and `s2` match, but the (i+1)st character of s1 is less than the (i+1)st character of `s2`. For example, "abc" is less than "bcd", and "abd" is less than "abe".
+            - All characters of s1 match s2, but s1 is shorter than s2. For example,"abc" is less than "abcd".
+            - The characters in each of the sequences `A–Z, a–z, and 0–9` have consecutive codes.
+            - All upper-case letters are less than all lower-case letters. (In ASCII, codes between 65 and 90 represent upper-case letters; codes between 97 and 122 represent lower-case letters.)
+            - Digits are less than letters. (Codes between 48 and 57 represent digits.)
+            - Spaces are less than all printing characters. (The space character has the value 32 in ASCII.)
+                    
 
+## 13.6 String Idioms
 
 
         
