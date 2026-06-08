@@ -233,6 +233,43 @@
         - Reads until it finds a new-line character.
         - Discards the new-line character instead of storing it in the array, a null character takes its place.
 
+## 13.4 Accessing the Characters in a String
+- Since strings are stored as arrays, we can use subscripting to access the characters in a string.
+    ```c
+            int count_spaces(const char s[])
+            {
+                int count = 0, i;
+
+                for (i = 0; s[i] != '\0'; i++)
+                {
+                    if (s[i] == ' ')
+                    {
+                        count++;
+                    }
+                }
+                return count;
+            }
+    ```    
+
+- More common to use a `pointer` to string start:
+    ```c
+            int count_spaces(const char *s)
+            {
+                int count = 0;
+
+                for (; *s != '\0'; s++)
+                {
+                    if (*s == ' ')
+                    {
+                        count++;
+                    }
+                }
+                return count;
+            }
+    ```
+
+
+
 
 
         
