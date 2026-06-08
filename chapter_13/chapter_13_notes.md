@@ -333,5 +333,37 @@
 
 ## 13.6 String Idioms
 
+## 13.7 Array of Strings
+```c
+        char planets[][8] = {"Mercury", "Venus", "Earth",
+                             "Mars", "Jupiter", "Saturn",
+                             "Uranus", "Neptune", "Pluto"};
+```
+![alt_text](images/image5.png)
+- All space in the array is used whether needed be the string or not, this is waste of memory.
+- Declare an array of pointers to strings for explicit sizings:
+```c
+        char *planets[] = {"Mercury", "Venus", "Earth",
+                             "Mars", "Jupiter", "Saturn",
+                             "Uranus", "Neptune", "Pluto"};
+```
+![alt_text](images/image6.png)
 
+- Command Line Arguments
+    ```c
+            int main(int argc, char *argv[])
+            {
+                ....
+            }
+    ```
+    
+    - `argc` (argument count) is the number of command-line arguments (including the name of the program itself)
+    - `argc` (argument vector) is an array of pointers to the command-line arguments, which are stored in string form.
+        - `argv[0]` points to the name of the program, while `argv[1]` through `argv[argc - 1]` point to the remaining command-line arguments.
+        - `argv` has one additional element, `argv[argc]`, which is always a null pointer - a special pointer that points to nothing (NULL macro).
+
+        - ex.
+
+            ![alt_text](images/image7.png) 
+            ![alt_text](images/image8.png)
         
