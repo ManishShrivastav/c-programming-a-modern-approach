@@ -16,10 +16,17 @@ Q&A section carefully before attempting!
 
 #include <stdio.h>
 
-#define STRINGIFY(x) #x
-#define TOSTRING(x) STRINGIFY(x)
+#define STRINGIFY(x) #x             // This macro converts its argument into a string literal
 
-#define LINE_FILE "Line " TOSTRING(__LINE__) " of file " __FILE__
+#define TOSTRING(x) STRINGIFY(x)    // This macro ensures that the argument is expanded before 
+                                    // being stringified. example: TOSTRING(__LINE__) will expand 
+                                    //__LINE__ to the current line number before stringifying it.   
+
+#define LINE_FILE "Line " TOSTRING(__LINE__) " of file " __FILE__   // This macro constructs the desired string by 
+                                                                    // concatenating the line number and file name. The __LINE__ and __FILE__ macros are 
+                                                                    // predefined by the C preprocessor and provide the current line number and file name, 
+                                                                    // respectively. The TOSTRING macro is used to ensure that the line number is properly 
+                                                                    // converted to a string before being concatenated with the rest of the message.
 
 int main(void)
 {
