@@ -54,6 +54,48 @@
     typedef int Bool;
     #endif
 ```
+## 15.3 Dividing a Program into Files
+
+
+## 15.4 Building a Multiple File Program
+- Makefiles: a file containing the information necessary to build a program.
+    - A makefile not only lists the files that are part of the program, but also describes dependencies among the files.
+    1. Each command in a makefile must preceded by a tab character.
+    2. A makefile is normally stored in a file named `Makefile` or `makefile`.
+    3. To invoke --> `make target`
+
+    ```makefile
+    justify: justify.o word.o line.o
+            gcc -o justify justify.o word.o line.o
+
+    justify.o: justify.c word.h line.h
+            gcc -c justify.c
+
+    word.o: word.c word.h
+            gcc -c word.c
+
+    line.o: line.c line.h
+            gcc -c line.c
+    ```
+- Rules: groups of lines in a makefile.
+- Targets: The first line in each rule is a `target` file to build, followed by the target's file dependencies.
+    ```makefile
+    justify: justify.o word.o line.o
+        gcc -o justify justify.o word.o line.o
+    ```
+- Command: Tabbe nested line in a rule.
+
+- Deining Macros Outside a Program:
+- `gcc -D`: Defines a macro in-line.
+
+    ```makefile
+        gcc - DDEBUG=1 foo.c
+    ```
+    - In this example, the **DEBUG** macro is defined to have the value of 1 in the program `foo.c` just as if the line
+        ```c
+            #define DEBUG 1
+        ``` 
+- `gcc -U`: Undefine a macro in-line.
 
 
 
