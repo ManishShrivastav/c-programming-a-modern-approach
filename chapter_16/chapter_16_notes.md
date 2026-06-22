@@ -106,3 +106,23 @@ const struct dialing_code country_codes[] = {
     {"United States", 1},         {"Vietnam", 84}
 };
 ```
+
+## 16.4 Unions
+A `union`, like a structure, consists of one or more members, possibly of different types. However, the compiler allocates only enough space for the largest of the members, which overlay each other within this space. As a result, assigning a new value to one member alters the values of the other members as well.
+```c
+    union {
+    int i;
+    double d;
+    } u;
+
+    Notice how the declaration of a union closely resembles a structure declaration:
+
+    struct {
+    int i;
+    double d;
+} s;
+```
+![al_text](images/image2.png)
+
+- Follow the same type tag and define properties of structures.
+
