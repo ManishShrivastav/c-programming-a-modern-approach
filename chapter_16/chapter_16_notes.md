@@ -26,5 +26,41 @@
 - Structure variables of the same type can be copied directly with `=`.
     - Even arrays within the structure are copied unlike arrays alone.
 
+## 16.2 Struture Types
 
+- Structure declarations without a *type* name cannot be reused elsewhere to create the same *type* of structure.
+    - We need to provide a *type* name to the structure.
+    1. Structure Tag: It is a name used to identify a particular kind of structure. 
+
+    - Ex. Structure tag named `part`: `part` name defines the reusable `struct part` type.
+        - Semicolon follows to close the definition.
+        ```c
+            struct part
+            {
+                int number;
+                char name[NAME_LEN + 1];
+                int on_hand;
+            };
+        ```
+    - Use e.x. `struct part part1, part2` to define new variables where `part1` and `part2` are two variables of type `struct part`.
+    
+    2. Defining a Stucture Type: We can use *`typedef`* to define a genuine type name
+        ```c
+            typedef struct
+            {
+                int number;
+                char name[NAME_LEN + 1];
+                int on_hand;
+            } Part;
+
+
+            Part part1, part2;
+        ```
+    - `Part` is the name of the type and comes at the end.
+    - Now `Part` can be used the same way other types like `int` etc. to declare variables.
+
+- C99 Compound Literals: Creating Structures on the fly.
+```c
+    print_part((struct part) {528, "Disk drive", 10});
+```
 
