@@ -126,3 +126,14 @@ A `union`, like a structure, consists of one or more members, possibly of differ
 
 - Follow the same type tag and define properties of structures.
 
+# 16.5 Enumerations
+- Enumerations: Variables that have a small number of possible values.
+```c
+    enum {CLUBS, DIAMONDS, HEARTS, SPADES} s1, s2;
+```
+- Follow the same type tag and define properties of structures.
+- When no value is given for an enumeration constant, its value is one greater that the value of the previous constant.
+    - The first value is 0 by default.
+```c
+    enum EGA_colors {BLACK, LT_GRAY = 7, DK_GRAY, WHITE = 15};
+```
